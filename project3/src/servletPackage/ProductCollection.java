@@ -6,7 +6,7 @@ package servletPackage;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-//import java.io.FileNotFoundException;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -71,8 +71,37 @@ public class ProductCollection {
 		
 	}
 	
-	//Update quantity of certain product by using inputted id as if one had been bought
-	public Product updateStatus(String id)
+	//Get every category from the inputted text file
+	public ArrayList <String> getCategories()
+	{
+		//Iterator to traverse the collection
+		Iterator <Product> iter = products.iterator();
+		ArrayList <String> toReturn = new ArrayList<String>();
+		Product temp = new Product();
+
+		
+		while(iter.hasNext())
+		{
+			temp = iter.next();
+			
+			if(toReturn.contains(temp.getInstrType()))
+			{
+				
+			}
+			else {
+				toReturn.add(temp.getInstrType());
+			}
+			
+			
+		}
+
+		
+		return toReturn;
+		
+	}
+	
+	//Update quantity of certain product by using inputted id as if an amount had been bought
+	public Product increaseStatus(String id, int num)
 	{
 		//Iterator to traverse the collection
 		Iterator <Product> iter = products.iterator();
@@ -85,19 +114,41 @@ public class ProductCollection {
 			if(toReturn.getId().equals(id))
 			{
 				//Decrement quantity by 1 of product
-				toReturn.setQuantity(toReturn.getQuantity()-1);
+				toReturn.setQuantity(toReturn.getQuantity()+num);
 			}
 		}
 		
 		return toReturn;
 	}
 	
+	
+	//Update quantity of certain product by using inputted id as if a number had been sold
+		public Product decreaseStatus(String id, int num)
+		{
+			//Iterator to traverse the collection
+			Iterator <Product> iter = products.iterator();
+			Product toReturn = new Product();
+			
+			while(iter.hasNext())
+			{
+				toReturn = iter.next();
+				
+				if(toReturn.getId().equals(id))
+				{
+					//Decrement quantity by 1 of product
+					toReturn.setQuantity(toReturn.getQuantity()-num);
+				}
+			}
+			
+			return toReturn;
+		}
+	
 	//Return a collection of products by the type of instrument
-	public ProductCollection retrieveCollection(String type)
+	public ArrayList <Product> retrieveCollection(String type)
 	{
 		//Iterator to traverse the collection
 		Iterator<Product> iter = products.iterator();
-		ProductCollection toReturn = new ProductCollection();
+		ArrayList <Product> toReturn = new ArrayList <Product>();
 		Product temp = new Product();
 		
 		while(iter.hasNext())
@@ -108,12 +159,30 @@ public class ProductCollection {
 			//Like a category
 			if(temp.getInstrType().equals(type))
 			{
-				toReturn.addInstrument(temp);
+				toReturn.add(temp);
 			}
 		}
 		
 		return toReturn;
 	}
+	
+	
+	//Return the entire data file as an arraylist
+		public ArrayList <Product> toArrayList()
+		{
+			//Iterator to traverse the collection
+			Iterator<Product> iter = products.iterator();
+			ArrayList <Product> toReturn = new ArrayList <Product>();
+			Product temp = new Product();
+			
+			while(iter.hasNext())
+			{
+				temp = iter.next();
+				toReturn.add(temp);
+			}
+			
+			return toReturn;
+		}
 	
 	//delete an entire product as if it wasn't sold anymore
 	public void deleteProduct(String id)
@@ -133,14 +202,32 @@ public class ProductCollection {
 				}
 		}
 	}
+	
+	//Gets the total number of inventory items
+	public int getInventorySize()
+	{
+		//Iterator to traverse the collection
+		Iterator <Product> iter = products.iterator();
+		Product p = new Product();
+		int inventory = 0;
+		
+		while(iter.hasNext())
+		{
+			p = iter.next();
+			
+			inventory += p.getQuantity();
+		}
+		
+		return inventory;
+	}
 
 	
 	//When the instrument or accessory is being bought, suggest a collection that they may also be interested in
-	public ProductCollection suggestCollection(Product p)
+	public ArrayList <Product> suggestCollection(Product p)
 	{
 		//Iterator to traverse the collection
 		Iterator<Product> iter = products.iterator();
-		ProductCollection toSuggest = new ProductCollection();
+		ArrayList <Product> toSuggest = new ArrayList <Product>();
 		Product temp = new Product();
 		
 		//Title Prompt to tell them what they are looking at
@@ -157,7 +244,7 @@ public class ProductCollection {
 				
 				if(temp.getInstrType().equals("Picks") || temp.getInstrType().equals("Strings"))
 				{
-					toSuggest.addInstrument(temp);
+					toSuggest.add(temp);
 				}
 			}
 		}
@@ -170,7 +257,7 @@ public class ProductCollection {
 				
 				if(temp.getInstrType().equals("Cable") || temp.getInstrType().equals("Pedal"))
 				{
-					toSuggest.addInstrument(temp);
+					toSuggest.add(temp);
 				}
 			}
 		}
@@ -183,7 +270,7 @@ public class ProductCollection {
 				
 				if(temp.getInstrType().equals("Drum Sticks"))
 				{
-					toSuggest.addInstrument(temp);
+					toSuggest.add(temp);
 				}
 			}
 		}
@@ -196,7 +283,7 @@ public class ProductCollection {
 				
 				if(temp.getInstrType().equals("Reeds"))
 				{
-					toSuggest.addInstrument(temp);
+					toSuggest.add(temp);
 				}
 			}
 		}
@@ -209,7 +296,7 @@ public class ProductCollection {
 				
 				if(temp.getInstrType().equals("Metronome") || temp.getInstrType().equals("Stand"))
 				{
-					toSuggest.addInstrument(temp);
+					toSuggest.add(temp);
 				}
 			}
 		}
