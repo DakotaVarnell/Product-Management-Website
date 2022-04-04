@@ -23,7 +23,7 @@ public class Servlet extends HttpServlet {
 	 */
 	public Servlet() {
 		super();
-		myData = new ProductCollection("./project3/inventoryTest.txt");
+		myData = new ProductCollection("./servletPackage/inventoryTest.txt");
 		
 		// TODO Auto-generated constructor stub
 	}
@@ -34,8 +34,25 @@ public class Servlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String user = request.getParameter("userName");
 		request.setAttribute("userName",user); 
-
-
+		String password = request.getParameter("InputtedPassword");
+		request.setAttribute("InputtedPassword", password); 
+			
+		if(request.getParameter("indexButton")!=null) {
+			if(user.equals("md") && password.equals("pw"))
+			{
+				RequestDispatcher rd=request.getRequestDispatcher("/products.jsp");
+				rd.forward(request,response);
+				
+			}
+			else
+			{
+				RequestDispatcher rd=request.getRequestDispatcher("/wrongInput.jsp");
+				rd.forward(request,response);
+			}
+	
+			
+		}		
+		
 		if(request.getParameter("indexButton")!=null) {
 			String color = request.getParameter("backgroundColor");
 			response.getWriter().append("<!DOCTYPE html>\r\n" + 
@@ -62,10 +79,9 @@ public class Servlet extends HttpServlet {
 		}
 		if(request.getParameter("pickCarButton")!=null) {
 			String value = "<select name=\"cars\">";
-			ArrayList <Product> temp = myData.toArrayList();
-			//Iterator<Product> iter = temp.iterator().;
-			while (temp.iterator().hasNext()) {
-				Product p = temp.iterator().next();
+			Iterator<Product> iter = myData.getIterator();
+			while (iter.hasNext()) {
+				Product p = iter.next();
 				value += "<option value=\""+p.getInstrType()+"\">"+p.getInstrType()+"</option>";
 			}
 			value += "</select>\r\n";

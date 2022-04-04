@@ -220,6 +220,12 @@ public class ProductCollection {
 		
 		return inventory;
 	}
+	
+	//Creates an iterator for our collection class
+		public Iterator<Product> getIterator()
+		{
+			return products.iterator();
+		}
 
 	
 	//When the instrument or accessory is being bought, suggest a collection that they may also be interested in
