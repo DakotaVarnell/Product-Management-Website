@@ -9,10 +9,12 @@
 <body>
 	<%
 		String name = (String) request.getAttribute("userName");
+		String password = (String) request.getAttribute("InputtedPassword");
 	%>
 	<%=name%> 
 	<form action="/project3/Servlet" method="get">
 	    <input type="hidden" value=<%=name%> name="userName">
+	    <input type="hidden" value=<%=password%> name="InputtedPassword">
 		<%
 			String car = (String) request.getAttribute("carChoice");
 			String desc = (String) request.getAttribute("carDesc");

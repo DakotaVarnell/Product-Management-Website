@@ -37,30 +37,19 @@ public class Servlet extends HttpServlet {
 		String password = request.getParameter("InputtedPassword");
 		request.setAttribute("InputtedPassword", password); 
 			
-		if(request.getParameter("indexButton")!=null) {
-			if(user.equals("md") && password.equals("pw"))
+		//if(request.getParameter("indexButton")!=null) {
+		if(user.equals("md") && password.equals("pw"))
 			{
-				RequestDispatcher rd=request.getRequestDispatcher("/products.jsp");
-				rd.forward(request,response);
-				
-			}
-			else
-			{
-				RequestDispatcher rd=request.getRequestDispatcher("/wrongInput.jsp");
-				rd.forward(request,response);
-			}
 	
-			
-		}		
 		
-		if(request.getParameter("indexButton")!=null) {
-			String color = request.getParameter("backgroundColor");
-			response.getWriter().append("<!DOCTYPE html>\r\n" + 
-					"<html>\r\n" + 
-					"<head>\r\n" + 
-					"<meta charset=\"ISO-8859-1\">\r\n" + 
-					"<title>Insert title here</title>\r\n" + 
-					"</head>\r\n"); 
+				if(request.getParameter("indexButton")!=null) {
+					String color = request.getParameter("backgroundColor");
+					response.getWriter().append("<!DOCTYPE html>\r\n" + 
+							"<html>\r\n" + 
+							"<head>\r\n" + 
+							"<meta charset=\"ISO-8859-1\">\r\n" + 
+							"<title>Insert title here</title>\r\n" + 
+							"</head>\r\n"); 
 					if (color != null) {
 						response.getWriter().append("<body style=\"background-color:"+color+";\">\r\n"); 
 					}
@@ -68,63 +57,71 @@ public class Servlet extends HttpServlet {
 						response.getWriter().append("<body>\r\n"); 
 					}
 
-		response.getWriter().append(user+" here are your choices:<br>	<form action=http://localhost:8080/project3/Servlet\r\n" + 
-					"		method=\"get\">\r\n" + 
-					"		<input type=\"hidden\" value=\""+user+"\" name=\"userName\">\r\n" + 
-					"		<input type=\"submit\" value=\"Pick Car\" name=\"pickCarButton\">\r\n" + 
-					"		<input type=\"submit\" value=\"Pick Color\" name=\"pickColorButton\">\r\n" + 
-					"	</form>\r\n" + 
-					"</body>\r\n" + 
-					"</html>");
-		}
-		if(request.getParameter("pickCarButton")!=null) {
-			String value = "<select name=\"cars\">";
-			Iterator<Product> iter = myData.getIterator();
-			while (iter.hasNext()) {
-				Product p = iter.next();
-				value += "<option value=\""+p.getInstrType()+"\">"+p.getInstrType()+"</option>";
+					response.getWriter().append(user+" here are your choices:<br>	<form action=http://localhost:8080/project3/Servlet\r\n" + 
+							"		method=\"get\">\r\n" + 
+							"		<input type=\"hidden\" value=\""+user+"\" name=\"userName\">\r\n" + 
+							"		<input type=\"hidden\" value=\""+password+"\" name=\"InputtedPassword\">\r\n" + 
+							"		<input type=\"submit\" value=\"Pick Car\" name=\"pickCarButton\">\r\n" + 
+							"		<input type=\"submit\" value=\"Pick Color\" name=\"pickColorButton\">\r\n" + 
+							"	</form>\r\n" + 
+							"</body>\r\n" + 
+							"</html>");
+				}
+				if(request.getParameter("pickCarButton")!=null) {
+					String value = "<select name=\"cars\">";
+					//THE DATA IS NOT BEING READ IN CORRECTLY I BELIEVE
+					Iterator<Product> iter = myData.getIterator();
+					while (iter.hasNext()) {
+						Product p = iter.next();
+						value += "<option value=\""+p.getInstrType()+"\">"+p.getInstrType()+"</option>";
+					}
+					value += "</select>\r\n";
+					request.setAttribute("dropDownOptions",value); 	
+					RequestDispatcher rd=request.getRequestDispatcher("/products.jsp");
+					rd.forward(request,response);
+				}		
+				if(request.getParameter("getCarInfo")!=null) {
+					String carChoice = request.getParameter("cars");
+					request.setAttribute("carChoice",carChoice);
+
+					RequestDispatcher rd=request.getRequestDispatcher("/products2.jsp");
+					rd.forward(request,response);
+				}		
+				if(request.getParameter("pickColorButton")!=null) {
+					response.getWriter().append("<html>\r\n" + 
+							"<head>\r\n" + 
+							"<meta charset=\"ISO-8859-1\">\r\n" + 
+							"<title>Insert title here</title>\r\n" + 
+							"</head>\r\n" + 
+							"<body>\r\n" + 
+							user+"	\r\n" + 
+							"	<form action=\"/project3/Servlet\" method=\"get\">\r\n" + 
+							"	    <input type=\"hidden\" value="+user+" name=\"userName\">\r\n" + 
+							"	    <input type=\"hidden\" value="+password+" name=\"InputtedPassword\">\r\n" + 
+							"		\r\n" + 
+							"		Please select a color:<br>\r\n" + 
+							"		<select name=\"backgroundColor\">\r\n" + 
+							"			<option value=\"powderblue\">powderblue</option>\r\n" + 
+							"			<option value=\"Tomato\">Tomato</option>\r\n" + 
+							"			<option value=\"Orange\">Orange</option>\r\n" + 
+							"			<option value=\"LightGray\">LightGray</option>\r\n" + 
+							"			<option value=\"SlateBlue\">SlateBlue</option>\r\n" + 
+							"			<option value=\"MediumSeaGreen\">MediumSeaGreen</option>\r\n" + 
+							"		</select>\r\n" + 
+							"		<br> \r\n" + 
+							"		<input type=\"submit\" value=\"Go!\" name=\"indexButton\">\r\n" + 
+							"	</form>\r\n" + 
+							"</body>\r\n" + 
+							"</html>");
+				}	
 			}
-			value += "</select>\r\n";
-			request.setAttribute("dropDownOptions",value); 	
-			RequestDispatcher rd=request.getRequestDispatcher("/products.jsp");
-			rd.forward(request,response);
-		}		
-		if(request.getParameter("getCarInfo")!=null) {
-			String carChoice = request.getParameter("cars");
-			request.setAttribute("carChoice",carChoice);
-			//String desc = myData.getDesc(carChoice);
-			//request.setAttribute("carDesc",desc);
-	
-			RequestDispatcher rd=request.getRequestDispatcher("/products2.jsp");
-			rd.forward(request,response);
-		}		
-		if(request.getParameter("pickColorButton")!=null) {
-			response.getWriter().append("<html>\r\n" + 
-					"<head>\r\n" + 
-					"<meta charset=\"ISO-8859-1\">\r\n" + 
-					"<title>Insert title here</title>\r\n" + 
-					"</head>\r\n" + 
-					"<body>\r\n" + 
-					user+"	\r\n" + 
-					"	<form action=\"/project3/Servlet\" method=\"get\">\r\n" + 
-					"	    <input type=\"hidden\" value="+user+" name=\"userName\">\r\n" + 
-					"		\r\n" + 
-					"		Please select a color:<br>\r\n" + 
-					"		<select name=\"backgroundColor\">\r\n" + 
-					"			<option value=\"powderblue\">powderblue</option>\r\n" + 
-					"			<option value=\"Tomato\">Tomato</option>\r\n" + 
-					"			<option value=\"Orange\">Orange</option>\r\n" + 
-					"			<option value=\"LightGray\">LightGray</option>\r\n" + 
-					"			<option value=\"SlateBlue\">SlateBlue</option>\r\n" + 
-					"			<option value=\"MediumSeaGreen\">MediumSeaGreen</option>\r\n" + 
-					"		</select>\r\n" + 
-					"		<br> \r\n" + 
-					"		<input type=\"submit\" value=\"Go!\" name=\"indexButton\">\r\n" + 
-					"	</form>\r\n" + 
-					"</body>\r\n" + 
-					"</html>");
-		}		
+				
+	else
+	{
+		RequestDispatcher rd=request.getRequestDispatcher("/wrongInput.jsp");
+		rd.forward(request,response);
 	}
+}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
