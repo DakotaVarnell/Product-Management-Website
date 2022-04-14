@@ -23,7 +23,10 @@ public class Servlet extends HttpServlet {
 	 */
 	public Servlet() {
 		super();
-		myData = new ProductCollection("./servletPackage/inventoryTest.txt");
+		myData = new ProductCollection("C:\\Users\\varne\\git\\project3\\project3\\src\\servletPackage\\inventoryTest.txt");
+		myData.toRead();
+		
+		
 		
 		// TODO Auto-generated constructor stub
 	}
@@ -57,19 +60,18 @@ public class Servlet extends HttpServlet {
 						response.getWriter().append("<body>\r\n"); 
 					}
 
-					response.getWriter().append(user+" here are your choices:<br>	<form action=http://localhost:8080/project3/Servlet\r\n" + 
+					response.getWriter().append(user+" Please Select One:<br>	<form action=http://localhost:8080/project3/Servlet\r\n" + 
 							"		method=\"get\">\r\n" + 
 							"		<input type=\"hidden\" value=\""+user+"\" name=\"userName\">\r\n" + 
 							"		<input type=\"hidden\" value=\""+password+"\" name=\"InputtedPassword\">\r\n" + 
-							"		<input type=\"submit\" value=\"Pick Car\" name=\"pickCarButton\">\r\n" + 
-							"		<input type=\"submit\" value=\"Pick Color\" name=\"pickColorButton\">\r\n" + 
+							"		<input type=\"submit\" value=\"Employee\" name=\"employeeButton\">\r\n" + 
+							"		<input type=\"submit\" value=\"Customer\" name=\"customerButton\">\r\n" + 
 							"	</form>\r\n" + 
 							"</body>\r\n" + 
 							"</html>");
 				}
-				if(request.getParameter("pickCarButton")!=null) {
+				if(request.getParameter("customerButton")!=null) {
 					String value = "<select name=\"cars\">";
-					//THE DATA IS NOT BEING READ IN CORRECTLY I BELIEVE
 					Iterator<Product> iter = myData.getIterator();
 					while (iter.hasNext()) {
 						Product p = iter.next();
@@ -87,7 +89,7 @@ public class Servlet extends HttpServlet {
 					RequestDispatcher rd=request.getRequestDispatcher("/products2.jsp");
 					rd.forward(request,response);
 				}		
-				if(request.getParameter("pickColorButton")!=null) {
+				if(request.getParameter("employeeButton")!=null) {
 					response.getWriter().append("<html>\r\n" + 
 							"<head>\r\n" + 
 							"<meta charset=\"ISO-8859-1\">\r\n" + 
@@ -114,6 +116,13 @@ public class Servlet extends HttpServlet {
 							"</body>\r\n" + 
 							"</html>");
 				}	
+				if(request.getParameter("showItemsButton")!=null) {
+					String carChoice = request.getParameter("cars");
+					request.setAttribute("carChoice",carChoice);
+
+					RequestDispatcher rd=request.getRequestDispatcher("/products2.jsp");
+					rd.forward(request,response);
+				}		
 			}
 				
 	else

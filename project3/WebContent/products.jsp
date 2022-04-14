@@ -16,8 +16,8 @@
 		<%
 			String selectionText = (String) request.getAttribute("dropDownOptions");
 		%>
-		Please select a car:<br><%=selectionText%><br> 
-		<input type="submit" value="Get Info!" name="getCarInfo">
+		Please select a Category<br><%=selectionText%><br> 
+		<input type="submit" value="Show Items" name="showItemsButton">
 	</form>
 </body>
 </html>

@@ -1,0 +1,60 @@
+@charset "ISO-8859-1";
+
+.form{
+	color: orange;
+	font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+	font-size: 25pt;
+	position: absolute;
+	top: 380px;
+	left: 420px;
+}
+.userName{
+	font-size: 20pt;
+	width: 418px;
+	
+}
+
+.welcome{
+	font-size: 35pt;
+	color: orange;
+	font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+	position: absolute;
+	top: 150px;
+	left: 400px;
+}
+
+.signIn{
+	font-size: 25pt;
+	color: black;
+	font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+	position: absolute;
+	top: 250px;
+	left: 630px;
+}
+
+.InputtedPassword{
+	font-size: 20pt;
+	width: 425px;
+	
+}
+
+.indexButton{
+	font-size: 20pt;
+	background-color: rgb(75, 75, 75);
+	color: orange;
+	position: absolute;
+	top: 100px;
+	left: -10px;
+	width: 600px;
+
+}
+
+.indexButton:hover{
+	background-color: orange;
+	color: black;
+}
+
+
+body{
+	background-color: rgb(100, 100, 100);
+}
