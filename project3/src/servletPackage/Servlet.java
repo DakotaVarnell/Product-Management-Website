@@ -39,6 +39,8 @@ public class Servlet extends HttpServlet {
 		request.setAttribute("userName",user); 
 		String password = request.getParameter("InputtedPassword");
 		request.setAttribute("InputtedPassword", password); 
+		String addInst = request.getParameter("add");
+		request.setAttribute("add", addInst); 
 			
 		//if(request.getParameter("indexButton")!=null) {
 		if(user.equals("md") && password.equals("pw"))
@@ -51,7 +53,7 @@ public class Servlet extends HttpServlet {
 							"<html>\r\n" + 
 							"<head>\r\n" + 
 							"<meta charset=\"ISO-8859-1\">\r\n" + 
-							"<title>Insert title here</title>\r\n" + 
+							"<title>6th Street Music Co.</title>\r\n" + 
 							"</head>\r\n"); 
 					if (color != null) {
 						response.getWriter().append("<body style=\"background-color:"+color+";\">\r\n"); 
@@ -93,7 +95,7 @@ public class Servlet extends HttpServlet {
 					response.getWriter().append("<html>\r\n" + 
 							"<head>\r\n" + 
 							"<meta charset=\"ISO-8859-1\">\r\n" + 
-							"<title>Insert title here</title>\r\n" + 
+							"<title>6th Street Music Co. </title>\r\n" + 
 							"</head>\r\n" + 
 							"<body>\r\n" + 
 							user+"	\r\n" + 
@@ -101,28 +103,77 @@ public class Servlet extends HttpServlet {
 							"	    <input type=\"hidden\" value="+user+" name=\"userName\">\r\n" + 
 							"	    <input type=\"hidden\" value="+password+" name=\"InputtedPassword\">\r\n" + 
 							"		\r\n" + 
-							"		Please select a color:<br>\r\n" + 
-							"		<select name=\"backgroundColor\">\r\n" + 
-							"			<option value=\"powderblue\">powderblue</option>\r\n" + 
-							"			<option value=\"Tomato\">Tomato</option>\r\n" + 
-							"			<option value=\"Orange\">Orange</option>\r\n" + 
-							"			<option value=\"LightGray\">LightGray</option>\r\n" + 
-							"			<option value=\"SlateBlue\">SlateBlue</option>\r\n" + 
-							"			<option value=\"MediumSeaGreen\">MediumSeaGreen</option>\r\n" + 
+							"		Please select a Function:<br>\r\n" + 
+							"		<select name=\"optionChoice\">\r\n" + 
+							"			<option value=\"add\">Add Instrument</option>\r\n" + 
+							"			<option value=\"remove\">Remove Instrument</option>\r\n" + 
+							"			<option value=\"find\">Find Instrument</option>\r\n" + 
+							"			<option value=\"buy\">Buy Inventory</option>\r\n" + 
+							"			<option value=\"sell\">Sell Inventory</option>\r\n" + 
+							"			<option value=\"size\">Inventory Size</option>\r\n" + 
 							"		</select>\r\n" + 
 							"		<br> \r\n" + 
-							"		<input type=\"submit\" value=\"Go!\" name=\"indexButton\">\r\n" + 
+							"		<input type=\"submit\" value=\"Submit\" name=\"submitButton\">\r\n" + 
 							"	</form>\r\n" + 
 							"</body>\r\n" + 
 							"</html>");
 				}	
-				if(request.getParameter("showItemsButton")!=null) {
-					String carChoice = request.getParameter("cars");
-					request.setAttribute("carChoice",carChoice);
-
-					RequestDispatcher rd=request.getRequestDispatcher("/products2.jsp");
-					rd.forward(request,response);
-				}		
+				if(request.getParameter("submitButton")!=null)
+				{
+					
+					String info = "";
+					Iterator<Product> iter = myData.getIterator();
+					while (iter.hasNext()) {
+						Product p = iter.next();
+						info +=  p.toString()+"<br>";
+					}
+					
+					if(request.getParameter("optionChoice").equals("add"))
+					{
+						System.out.println("add");
+						response.getWriter().append("<html>\r\n" + 
+							"<head>\r\n" + 
+							"<meta charset=\"ISO-8859-1\">\r\n" + 
+							"<title>6th Street Music Co. </title>\r\n" + 
+							"</head>\r\n" + 
+							"<body>\r\n" + 
+							"	\r\n" + 
+							"	<form action=\"/project3/Servlet\" method=\"get\">\r\n" + 
+							"	<input type=\"text\" name=\"addBox\" class = \"addTextBox\">"+
+							"	<input type=\"submit\" value =\"Finish\" name=\"finish\" class = \"finishButton\"><br>"+
+							
+							info+
+							"	</form>\r\n" + 
+							"</body>\r\n" + 
+							"</html>");
+						
+						if(request.getParameter("finish") != null)
+						{
+							
+						}
+					}
+					if(request.getParameter("optionChoice").equals("remove"))
+					{
+						System.out.println("remove");
+					}
+					if(request.getParameter("optionChoice").equals("find"))
+					{
+						System.out.println("find");
+					}
+					if(request.getParameter("optionChoice").equals("buy"))
+					{
+						System.out.println("buy");
+					}
+					if(request.getParameter("optionChoice").equals("sell"))
+					{
+						System.out.println("sell");
+					}
+					if(request.getParameter("optionChoice").equals("size"))
+					{
+						System.out.println("size");
+					}
+				
+				}				
 			}
 				
 	else

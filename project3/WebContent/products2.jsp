@@ -16,11 +16,11 @@
 	    <input type="hidden" value=<%=name%> name="userName">
 	    <input type="hidden" value=<%=password%> name="InputtedPassword">
 		<%
-			String car = (String) request.getAttribute("");
-			
+			String car = (String) request.getAttribute("carChoice");
+			String desc = (String) request.getAttribute("carDesc");
 		%>
 		Your car:<br><%=car%><br> 
-
+		<br><%=desc%><br>
 		<input type="submit" value="Start Over!" name="indexButton">
 	</form>
 </body>
