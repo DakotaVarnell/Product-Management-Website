@@ -122,11 +122,16 @@ public class Servlet extends HttpServlet {
 				{
 					
 					String info = "";
+					String value = "<select name=\"ids\">";
 					Iterator<Product> iter = myData.getIterator();
 					while (iter.hasNext()) {
 						Product p = iter.next();
 						info +=  p.toString()+"<br>";
+						value += "<option value=\""+p.getId()+"\">"+p.getId()+"</option>";
+						
 					}
+					value += "</select>\r\n";
+					request.setAttribute("ids", value);
 					
 					if(request.getParameter("optionChoice").equals("add"))
 					{
@@ -139,38 +144,147 @@ public class Servlet extends HttpServlet {
 							"<body>\r\n" + 
 							"	\r\n" + 
 							"	<form action=\"/project3/Servlet\" method=\"get\">\r\n" + 
-							"	<input type=\"text\" name=\"addBox\" class = \"addTextBox\">"+
-							"	<input type=\"submit\" value =\"Finish\" name=\"finish\" class = \"finishButton\"><br>"+
+							value+
+							"	<input type=\"range\" min=\"1\" max=\"100\" value=\"50\" class=\"slider\" name=\"myRange\"><br>"+
+							"	<input type=\"reset\" value =\"Reset\" name=\"reset\" class = \"resetButton\">"+
+							"	<input type=\"submit\" value =\"Submit\" name=\"submit\" class = \"submitButton\"><br>"+
+							"	<h5>Choose the ID and then the quantity to add</h5>"+
 							
 							info+
 							"	</form>\r\n" + 
 							"</body>\r\n" + 
 							"</html>");
+
 						
-						if(request.getParameter("finish") != null)
-						{
-							
-						}
+
 					}
 					if(request.getParameter("optionChoice").equals("remove"))
 					{
 						System.out.println("remove");
+						
+						response.getWriter().append("<html>\r\n" + 
+								"<head>\r\n" + 
+								"<meta charset=\"ISO-8859-1\">\r\n" + 
+								"<title>6th Street Music Co. </title>\r\n" + 
+								"</head>\r\n" + 
+								"<body>\r\n" + 
+								"	\r\n" + 
+								"	<form action=\"/project3/Servlet\" method=\"get\">\r\n" + 
+								"	<input type=\"text\" name=\"addBox\" class = \"addTextBox\">"+
+								"	<input type=\"submit\" value =\"Finish\" name=\"finish\" class = \"finishButton\"><br>"+
+								"	<h5>Enter the ID and then the quantity to delete seperated by a comma</h5>"+
+								
+								info+
+								"	</form>\r\n" + 
+								"</body>\r\n" + 
+								"</html>");
+							
+							if(request.getParameter("finish") != null)
+							{
+								
+							}
+						
 					}
 					if(request.getParameter("optionChoice").equals("find"))
 					{
 						System.out.println("find");
+						
+						response.getWriter().append("<html>\r\n" + 
+								"<head>\r\n" + 
+								"<meta charset=\"ISO-8859-1\">\r\n" + 
+								"<title>6th Street Music Co. </title>\r\n" + 
+								"</head>\r\n" + 
+								"<body>\r\n" + 
+								"	\r\n" + 
+								"	<form action=\"/project3/Servlet\" method=\"get\">\r\n" + 
+								"	<input type=\"text\" name=\"addBox\" class = \"addTextBox\">"+
+								"	<input type=\"submit\" value =\"Finish\" name=\"finish\" class = \"finishButton\"><br>"+
+								"	<h5>Enter ID to be Found</h5>"+
+								
+								info+
+								"	</form>\r\n" + 
+								"</body>\r\n" + 
+								"</html>");
+							
+							if(request.getParameter("finish") != null)
+							{
+								
+							}
 					}
 					if(request.getParameter("optionChoice").equals("buy"))
 					{
 						System.out.println("buy");
+						
+						response.getWriter().append("<html>\r\n" + 
+								"<head>\r\n" + 
+								"<meta charset=\"ISO-8859-1\">\r\n" + 
+								"<title>6th Street Music Co. </title>\r\n" + 
+								"</head>\r\n" + 
+								"<body>\r\n" + 
+								"	\r\n" + 
+								"	<form action=\"/project3/Servlet\" method=\"get\">\r\n" + 
+								"	<input type=\"text\" name=\"addBox\" class = \"addTextBox\">"+
+								"	<input type=\"submit\" value =\"Finish\" name=\"finish\" class = \"finishButton\"><br>"+
+								"	<h5>Enter ID of Bought Item</h5>"+
+								
+								info+
+								"	</form>\r\n" + 
+								"</body>\r\n" + 
+								"</html>");
+							
+							if(request.getParameter("finish") != null)
+							{
+								
+							}
 					}
 					if(request.getParameter("optionChoice").equals("sell"))
 					{
 						System.out.println("sell");
+						
+						response.getWriter().append("<html>\r\n" + 
+								"<head>\r\n" + 
+								"<meta charset=\"ISO-8859-1\">\r\n" + 
+								"<title>6th Street Music Co. </title>\r\n" + 
+								"</head>\r\n" + 
+								"<body>\r\n" + 
+								"	\r\n" + 
+								"	<form action=\"/project3/Servlet\" method=\"get\">\r\n" + 
+								"	<input type=\"text\" name=\"addBox\" class = \"addTextBox\">"+
+								"	<input type=\"submit\" value =\"Finish\" name=\"finish\" class = \"finishButton\"><br>"+
+								"	<h5>Enter ID of Sold Item</h5>"+
+								
+								info+
+								"	</form>\r\n" + 
+								"</body>\r\n" + 
+								"</html>");
+							
+							if(request.getParameter("finish") != null)
+							{
+								
+							}
 					}
 					if(request.getParameter("optionChoice").equals("size"))
 					{
 						System.out.println("size");
+						
+						response.getWriter().append("<html>\r\n" + 
+								"<head>\r\n" + 
+								"<meta charset=\"ISO-8859-1\">\r\n" + 
+								"<title>6th Street Music Co. </title>\r\n" + 
+								"</head>\r\n" + 
+								"<body>\r\n" + 
+								"	\r\n" + 
+								"	<form action=\"/project3/Servlet\" method=\"get\">\r\n" + 
+								"	<h5>The Size of the Inventory is "+
+								myData.getInventorySize()+"</h5>"+
+								"	</form>\r\n" + 
+								"</body>\r\n" + 
+								"</html>");
+							
+							if(request.getParameter("finish") != null)
+							{
+								
+							}
 					}
 				
 				}				
