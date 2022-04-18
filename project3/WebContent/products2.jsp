@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>6th Street Music Co. </title>
 </head>
 <body>
 	<%
@@ -20,6 +20,7 @@
 			String desc = (String) request.getAttribute("carDesc");
 		%>
 		Your car:<br><%=car%><br> 
+		
 		<br><%=desc%><br>
 		<input type="submit" value="Start Over!" name="indexButton">
 	</form>
