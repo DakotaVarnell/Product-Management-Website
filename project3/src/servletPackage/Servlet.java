@@ -148,8 +148,9 @@ public class Servlet extends HttpServlet {
 					RequestDispatcher rd=request.getRequestDispatcher("index.html");
 					rd.forward(request,response);
 				}
+				
 				if(request.getParameter("viewCartButton") != null) 
-				{
+					{
 					
 					String cart = "";
 					Iterator<Product> iter = myCart.getIterator();
@@ -230,6 +231,7 @@ public class Servlet extends HttpServlet {
 							"	<form action=\"/project3/Servlet\" method=\"get\">\r\n" + 
 							"	    <input type=\"hidden\" value="+user+" name=\"userName\">\r\n" + 
 							"	    <input type=\"hidden\" value="+password+" name=\"InputtedPassword\">\r\n" + 
+							"	    <input type=\"hidden\" value="+choice+" name=\"choice\">\r\n"+
 							value+
 							"	<input type=\"range\" min=\"1\" max=\"100\" value=\"50\" class=\"slider\" name=\"myRange\"><br>"+
 							"	<input type=\"reset\" value =\"Reset\" name=\"reset\" class = \"resetButton\">"+
@@ -240,19 +242,12 @@ public class Servlet extends HttpServlet {
 							"	</form>\r\n" + 
 							"</body>\r\n" + 
 							"</html>");
-						
-//						choice = request.getParameter("optionChoice");
-//						request.setAttribute("optionChoice", choice);
-						System.out.println(choice);
-						
-					}
-
 				}
 
 				
 				if(request.getParameter("submitChoice")!=null) 
 				{
-				
+					
 					response.getWriter().append("<html>\r\n" + 
 							"<head>\r\n" + 
 							"<meta charset=\"ISO-8859-1\">\r\n" + 
@@ -261,13 +256,15 @@ public class Servlet extends HttpServlet {
 							"<body>\r\n" + 
 							"	\r\n" + 
 							"	<form action=\"/project3/Servlet\" method=\"get\">\r\n" + 
+							"	    <input type=\"hidden\" value="+user+" name=\"userName\">\r\n" + 
+							"	    <input type=\"hidden\" value="+password+" name=\"InputtedPassword\">\r\n" + 
 							"	    <input type=\"hidden\" value="+choice+" name=\"choice\">\r\n"+
 							"	</form>\r\n" + 
 							"</body>\r\n" + 
 							"</html>");
 					
-					//comment
-					System.out.println(choice);
+					String chosen = request.getParameter("choice");
+					System.out.println(chosen);
 					
 					String selected_id = request.getParameter("ids");
 					String increase_quantity = request.getParameter("myRange");
@@ -280,15 +277,16 @@ public class Servlet extends HttpServlet {
 						int total_sub_quantity = p.getQuantity() - inp_quan_integer;
 						
 						
-//						if(p.getId().equals(selected_id))
-//						{
-//							
-//							if(request.getParameter(choice).equals("add")) {
-//								//p.setQuantity(total_add_quantity);
-//								//myData.toWrite();
-//							}
-//						}
+						if(p.getId().equals(selected_id))
+						{
+							System.out.println("id matches");
+							if(chosen.equals("add")) {
+								p.setQuantity(total_add_quantity);
+								myData.toWrite();
+							}
+						}
 					}
+				}
 				}
 //						
 //					if(request.getParameter("optionChoice").equals("remove"))
