@@ -148,9 +148,8 @@ public class Servlet extends HttpServlet {
 					RequestDispatcher rd=request.getRequestDispatcher("index.html");
 					rd.forward(request,response);
 				}
-				
 				if(request.getParameter("viewCartButton") != null) 
-					{
+				{
 					
 					String cart = "";
 					Iterator<Product> iter = myCart.getIterator();
@@ -242,11 +241,92 @@ public class Servlet extends HttpServlet {
 							"	</form>\r\n" + 
 							"</body>\r\n" + 
 							"</html>");
+						
+					}
+					if(request.getParameter("optionChoice").equals("remove"))
+					{
+							System.out.println("remove");
+							
+							response.getWriter().append("<html>\r\n" + 
+									"<head>\r\n" + 
+									"<meta charset=\"ISO-8859-1\">\r\n" + 
+									"<title>6th Street Music Co. </title>\r\n" + 
+									"</head>\r\n" + 
+									"<body>\r\n" + 
+									"	\r\n" + 
+									"	<form action=\"/project3/Servlet\" method=\"get\">\r\n" + 
+									"	    <input type=\"hidden\" value="+user+" name=\"userName\">\r\n" + 
+									"	    <input type=\"hidden\" value="+password+" name=\"InputtedPassword\">\r\n" + 
+									"	    <input type=\"hidden\" value="+choice+" name=\"choice\">\r\n"+
+									value+
+									"	<input type=\"range\" min=\"1\" max=\"100\" value=\"50\" class=\"slider\" name=\"myRange\"><br>"+
+									"	<input type=\"reset\" value =\"Reset\" name=\"reset\" class = \"resetButton\">"+
+									"	<input type=\"submit\" value =\"Submit\" name=\"submitChoice\" class = \"submitChoiceButton\"><br>"+
+									"	<h5>Choose the ID and then the quantity to remove</h5>"+
+									
+									info+
+									"	</form>\r\n" + 
+									"</body>\r\n" + 
+									"</html>");
+					}
+					if(request.getParameter("optionChoice").equals("find"))
+					{
+							System.out.println("find");
+							
+							response.getWriter().append("<html>\r\n" + 
+									"<head>\r\n" + 
+									"<meta charset=\"ISO-8859-1\">\r\n" + 
+									"<title>6th Street Music Co. </title>\r\n" + 
+									"</head>\r\n" + 
+									"<body>\r\n" + 
+									"	\r\n" + 
+									"	<form action=\"/project3/Servlet\" method=\"get\">\r\n" + 
+									"	    <input type=\"hidden\" value="+user+" name=\"userName\">\r\n" + 
+									"	    <input type=\"hidden\" value="+password+" name=\"InputtedPassword\">\r\n" + 
+									"	    <input type=\"hidden\" value="+choice+" name=\"choice\">\r\n"+
+									value+
+									"	<input type=\"range\" min=\"1\" max=\"100\" value=\"50\" class=\"slider\" name=\"myRange\"><br>"+
+									"	<input type=\"reset\" value =\"Reset\" name=\"reset\" class = \"resetButton\">"+
+									"	<input type=\"submit\" value =\"Submit\" name=\"submitChoice\" class = \"submitChoiceButton\"><br>"+
+									"	<h5>Choose the ID and then the quantity to remove</h5>"+
+									
+									info+
+									"	</form>\r\n" + 
+									"</body>\r\n" + 
+									"</html>");
+					}
+					if(request.getParameter("optionChoice").equals("size"))
+						{
+							System.out.println("size");
+							
+							response.getWriter().append("<html>\r\n" + 
+									"<head>\r\n" + 
+									"<meta charset=\"ISO-8859-1\">\r\n" + 
+									"<title>6th Street Music Co. </title>\r\n" + 
+									"</head>\r\n" + 
+									"<body>\r\n" + 
+									"	\r\n" + 
+									"	<form action=\"/project3/Servlet\" method=\"get\">\r\n" + 
+									"	    <input type=\"hidden\" value="+user+" name=\"userName\">\r\n" + 
+									"	    <input type=\"hidden\" value="+password+" name=\"InputtedPassword\">\r\n" + 
+									"	    <input type=\"hidden\" value="+choice+" name=\"choice\">\r\n"+
+									value+
+									"	<input type=\"range\" min=\"1\" max=\"100\" value=\"50\" class=\"slider\" name=\"myRange\"><br>"+
+									"	<input type=\"reset\" value =\"Reset\" name=\"reset\" class = \"resetButton\">"+
+									"	<input type=\"submit\" value =\"Submit\" name=\"submitChoice\" class = \"submitChoiceButton\"><br>"+
+									"	<h5>Choose the ID and then the quantity to remove</h5>"+
+									
+									info+
+									"	</form>\r\n" + 
+									"</body>\r\n" + 
+									"</html>");
+							
+						}
 				}
-
-				
 				if(request.getParameter("submitChoice")!=null) 
 				{
+				
+					//System.out.println(request.getParameter("choice"));
 					
 					response.getWriter().append("<html>\r\n" + 
 							"<head>\r\n" + 
@@ -283,78 +363,25 @@ public class Servlet extends HttpServlet {
 							if(chosen.equals("add")) {
 								p.setQuantity(total_add_quantity);
 								myData.toWrite();
+								System.out.println("add working");
+							}
+							if(chosen.equals("remove")) {
+								p.setQuantity(total_sub_quantity);
+								myData.toWrite();
+								System.out.println("sub working");
+							}
+							if(chosen.equals("find")) {
+								System.out.println("find working");
+							}
+							if(chosen.equals("size")) {
+								System.out.println("size working");
 							}
 						}
 					}
 				}
-				}
-//						
-//					if(request.getParameter("optionChoice").equals("remove"))
-//					{
-//						System.out.println("remove");
-//						
-//						response.getWriter().append("<html>\r\n" + 
-//								"<head>\r\n" + 
-//								"<meta charset=\"ISO-8859-1\">\r\n" + 
-//								"<title>6th Street Music Co. </title>\r\n" + 
-//								"</head>\r\n" + 
-//								"<body>\r\n" + 
-//								"	\r\n" + 
-//								"	<form action=\"/project3/Servlet\" method=\"get\">\r\n" + 
-//								value+
-//								"	<input type=\"range\" min=\"1\" max=\"100\" value=\"50\" class=\"slider\" name=\"myRange\"><br>"+
-//								"	<input type=\"reset\" value =\"Reset\" name=\"reset\" class = \"resetButton\">"+
-//								"	<input type=\"submit\" value =\"Submit\" name=\"submitChoice\" class = \"submitChoiceButton\"><br>"+
-//								"	<h5>Choose the ID and then the quantity to remove</h5>"+
-//								
-//								info+
-//								"	</form>\r\n" + 
-//								"</body>\r\n" + 
-//								"</html>");
-//						
-//					}
-//					if(request.getParameter("optionChoice").equals("find"))
-//					{
-//						System.out.println("find");
-//						
-//						response.getWriter().append("<html>\r\n" + 
-//								"<head>\r\n" + 
-//								"<meta charset=\"ISO-8859-1\">\r\n" + 
-//								"<title>6th Street Music Co. </title>\r\n" + 
-//								"</head>\r\n" + 
-//								"<body>\r\n" + 
-//								"	\r\n" + 
-//								"	<form action=\"/project3/Servlet\" method=\"get\">\r\n" + 
-//								value+
-//								"	<input type=\"range\" min=\"1\" max=\"100\" value=\"50\" class=\"slider\" name=\"myRange\"><br>"+
-//								"	<input type=\"reset\" value =\"Reset\" name=\"reset\" class = \"resetButton\">"+
-//								"	<input type=\"submit\" value =\"Submit\" name=\"submitChoice\" class = \"submitChoiceButton\"><br>"+
-//								"	<h5>Choose the ID and the instrument to find</h5>"+
-//								
-//								info+
-//								"	</form>\r\n" + 
-//								"</body>\r\n" + 
-//								"</html>");
-//
-//					}
-//
-//					if(request.getParameter("optionChoice").equals("size"))
-//					{
-//						System.out.println("size");
-//						
-//						response.getWriter().append("<html>\r\n" + 
-//								"<head>\r\n" + 
-//								"<meta charset=\"ISO-8859-1\">\r\n" + 
-//								"<title>6th Street Music Co. </title>\r\n" + 
-//								"</head>\r\n" + 
-//								"<body>\r\n" + 
-//								"	\r\n" + 
-//								"	<form action=\"/project3/Servlet\" method=\"get\">\r\n" + 
-//								"	<h5>The size of the inventory is " + myData.getInventorySize() + "</h5>");
-//					}
-				
-//				}				
+
 			}
+		
 				
 	else
 	{
