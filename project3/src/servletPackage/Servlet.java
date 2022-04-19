@@ -46,9 +46,6 @@ public class Servlet extends HttpServlet {
 		String choice = request.getParameter("optionChoice");
 		request.setAttribute("optionChoice", choice);
 
- 	
-		//System.out.println(user);
-		//System.out.println(password);
 		
 		// Set refresh, autoload time as 1 seconds
         //response.setIntHeader("Refresh", 10);
@@ -75,8 +72,8 @@ public class Servlet extends HttpServlet {
 							"		method=\"get\">\r\n" + 
 							"		<input type=\"hidden\" value=\""+user+"\" name=\"userName\">\r\n" + 
 							"		<input type=\"hidden\" value=\""+password+"\" name=\"InputtedPassword\">\r\n" + 
-							"		<input type=\"submit\" value=\"Employee\" name=\"employeeButton\">\r\n" + 
-							"		<input type=\"submit\" value=\"Customer\" name=\"customerButton\">\r\n" + 
+							"		<input type=\"submit\" value=\"Employee\" class = \"employeeButton\" name=\"employeeButton\">\r\n" + 
+							"		<input type=\"submit\" value=\"Customer\" class = \"customerButton\" name=\"customerButton\">\r\n" + 
 							"	</form>\r\n" + 
 							"</body>\r\n" + 
 							"</html>");
@@ -124,7 +121,7 @@ public class Servlet extends HttpServlet {
 							"		<input type=\"hidden\" value=\""+password+"\" name=\"InputtedPassword\">\r\n" + 
 							info+
 							value+
-							"	<h5>Choose the ID to purchase</h5>"+
+							"	<h5 class = \"displayMessage\" >Choose the ID to purchase</h5>"+
 							"	<input type=\"submit\" value=\"Add to Cart\" name=\"cartButton\">\r\n" +
 							"	</form>\r\n" + 
 							"</body>\r\n" + 
@@ -245,7 +242,6 @@ public class Servlet extends HttpServlet {
 					}
 					if(request.getParameter("optionChoice").equals("remove"))
 					{
-							System.out.println("remove");
 							
 							response.getWriter().append("<html>\r\n" + 
 									"<head>\r\n" + 
@@ -271,7 +267,6 @@ public class Servlet extends HttpServlet {
 					}
 					if(request.getParameter("optionChoice").equals("find"))
 					{
-							System.out.println("find");
 							
 							response.getWriter().append("<html>\r\n" + 
 									"<head>\r\n" + 
@@ -295,7 +290,6 @@ public class Servlet extends HttpServlet {
 					}
 					if(request.getParameter("optionChoice").equals("size"))
 						{
-							System.out.println("size");
 							
 							response.getWriter().append("<html>\r\n" + 
 									"<head>\r\n" + 
@@ -335,7 +329,6 @@ public class Servlet extends HttpServlet {
 							"</html>");
 					
 					String chosen = request.getParameter("choice");
-					System.out.println(chosen);
 					
 					
 					String selected_id = request.getParameter("ids");
@@ -347,7 +340,7 @@ public class Servlet extends HttpServlet {
 						
 						if(p.getId().equals(selected_id))
 						{
-							System.out.println("id matches");
+
 							if(chosen.equals("add")) 
 							{
 								String increase_quantity = request.getParameter("myRange");
@@ -356,7 +349,6 @@ public class Servlet extends HttpServlet {
 								
 								p.setQuantity(total_add_quantity);
 								myData.toWrite();
-								//System.out.println("add working");
 							}
 							if(chosen.equals("remove")) 
 							{
@@ -366,11 +358,28 @@ public class Servlet extends HttpServlet {
 								
 								p.setQuantity(total_sub_quantity);
 								myData.toWrite();
-								//System.out.println("sub working");
 							}
 							if(chosen.equals("find")) 
 							{
-								//System.out.println("find working");
+								String show_product = p.toString();
+								
+								response.getWriter().append("<html>\r\n" + 
+										"<head>\r\n" + 
+										"<meta charset=\"ISO-8859-1\">\r\n" + 
+										"<title>6th Street Music Co. </title>\r\n" + 
+										"</head>\r\n" + 
+										"<body>\r\n" + 
+										"	\r\n" + 
+										"	<form action=\"/project3/Servlet\" method=\"get\">\r\n" + 
+										"	    <input type=\"hidden\" value="+user+" name=\"userName\">\r\n" + 
+										"	    <input type=\"hidden\" value="+password+" name=\"InputtedPassword\">\r\n" + 
+										"	    <input type=\"hidden\" value="+choice+" name=\"choice\">\r\n"+
+										"		<h5>The item you were looking for is displayed below</h5>"+
+										show_product+
+										"		<img src =\"" +p.getImage()+ "\" width = 300 height = 300"+
+										"	</form>\r\n" + 
+										"</body>\r\n" + 
+										"</html>");
 							}
 
 						}

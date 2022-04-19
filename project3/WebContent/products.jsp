@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="style.css" type = "text/css">
 <meta charset="ISO-8859-1">
 <title>6th Street Music Co. </title>
 </head>

@@ -1,6 +1,6 @@
 @charset "ISO-8859-1";
 
-.form{
+form{
 	color: orange;
 	font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 	font-size: 25pt;
@@ -10,7 +10,7 @@
 }
 .userName{
 	font-size: 20pt;
-	width: 418pt;
+	width: 418px;
 }
 
 .welcome{
@@ -53,6 +53,10 @@
 	color: black;
 }
 
+.displayMessage{
+	color: orange;
+	font-size: 20pt;
+}
 
 body{
 	background-color: rgb(100, 100, 100);
