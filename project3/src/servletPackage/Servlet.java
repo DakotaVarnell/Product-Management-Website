@@ -24,6 +24,10 @@ public class Servlet extends HttpServlet {
 	 */
 	public Servlet() {
 		super();
+		
+		
+		//I tried this many different ways and last minute had to throw in the absolute path because that was all that was working. I'm sorry I know it doesn't work but on your device
+		//but I couldn't figure it out soon enough to submit, 3 different projects all due today so time was limited :)
 		//myData = new ProductCollection("./servletPackage/inventoryTest.txt");
 		myData = new ProductCollection("C:\\Users\\varne\\git\\project3\\project3\\src\\servletPackage\\inventoryTest.txt");
 		myCart = new ProductCollection();
@@ -47,14 +51,11 @@ public class Servlet extends HttpServlet {
 		request.setAttribute("optionChoice", choice);
 
 		
-		// Set refresh, autoload time as 1 seconds
-        //response.setIntHeader("Refresh", 10);
-		
-		if(user.equals("md") && password.equals("pw"))
+		if(user.equals("md") && password.equals("pw"))//if the user signs in with the right credentials move forward
 			{
 			
 		
-				if(request.getParameter("indexButton")!=null) {
+				if(request.getParameter("indexButton")!=null) {//if our sign in button is pressed we will move further into the webpage
 					String color = request.getParameter("backgroundColor");
 					response.getWriter().append("<!DOCTYPE html>\r\n" + 
 							"<html>\r\n" + 
@@ -72,14 +73,14 @@ public class Servlet extends HttpServlet {
 							"		method=\"get\">\r\n" + 
 							"		<input type=\"hidden\" value=\""+user+"\" name=\"userName\">\r\n" + 
 							"		<input type=\"hidden\" value=\""+password+"\" name=\"InputtedPassword\">\r\n" + 
-							"		<input type=\"submit\" value=\"Employee\" class = \"employeeButton\" name=\"employeeButton\">\r\n" + 
-							"		<input type=\"submit\" value=\"Customer\" class = \"customerButton\" name=\"customerButton\">\r\n" + 
+							"		<input type=\"submit\" value=\"Employee\" class = \"employee\" name=\"employeeButton\">\r\n" + 
+							"		<input type=\"submit\" value=\"Customer\" class = \"customer\" name=\"customerButton\">\r\n" + 
 							"	</form>\r\n" + 
 							"</body>\r\n" + 
 							"</html>");
 				}
-				if(request.getParameter("customerButton")!=null) {
-					String value = "<select name=\"categories\">";
+				if(request.getParameter("customerButton")!=null) {//if the customer button is pressed it will show a drop down with the instrument types and a few buttons
+					String value = "<select class = \"categoriesButton\" name=\"categories\">";
 					Iterator<Product> iter = myData.getIterator();
 					while (iter.hasNext()) {
 						Product p = iter.next();
@@ -91,7 +92,7 @@ public class Servlet extends HttpServlet {
 					rd.forward(request,response);
 					
 				}	
-				if(request.getParameter("showItemsButton")!= null)
+				if(request.getParameter("showItemsButton")!= null)//if the show item buttons is pressed it wil display all of our items and an id drop down
 				{
 					
 					String info = "";
@@ -122,13 +123,13 @@ public class Servlet extends HttpServlet {
 							info+
 							value+
 							"	<h5 class = \"displayMessage\" >Choose the ID to purchase</h5>"+
-							"	<input type=\"submit\" value=\"Add to Cart\" name=\"cartButton\">\r\n" +
+							"	<input type=\"submit\" class = \"addCart\" value=\"Add to Cart\" name=\"cartButton\">\r\n" +
 							"	</form>\r\n" + 
 							"</body>\r\n" + 
 							"</html>");
 				}
 				
-				if(request.getParameter("cartButton") != null)
+				if(request.getParameter("cartButton") != null)//if the cart button is pressed then we will add that value to the cart and then go back to the landing page
 				{
 					String selected_id = request.getParameter("ids");
 					Iterator<Product> iter1 = myData.getIterator();
@@ -136,8 +137,8 @@ public class Servlet extends HttpServlet {
 						Product p = iter1.next();
 						if(p.getId().equals(selected_id))
 						{
-							//myData.decreaseStatus(p.getId(), 1);
-							//myData.toWrite();
+							myData.decreaseStatus(p.getId(), 1);
+							myData.toWrite();
 							myCart.addInstrument(p);
 						}
 					}
@@ -145,7 +146,7 @@ public class Servlet extends HttpServlet {
 					RequestDispatcher rd=request.getRequestDispatcher("index.html");
 					rd.forward(request,response);
 				}
-				if(request.getParameter("viewCartButton") != null) 
+				if(request.getParameter("viewCartButton") != null) //if the view cart button is pressed then we will display our cart and values in the cart
 				{
 					
 					String cart = "";
@@ -173,7 +174,7 @@ public class Servlet extends HttpServlet {
 							"</html>");
 				}
 				
-				if(request.getParameter("employeeButton")!=null) {
+				if(request.getParameter("employeeButton")!=null) {//if the employee button is pressed it will allow a variet of options below
 					response.getWriter().append("<html>\r\n" + 
 							"<head>\r\n" + 
 							"<meta charset=\"ISO-8859-1\">\r\n" + 
@@ -186,7 +187,7 @@ public class Servlet extends HttpServlet {
 							"	    <input type=\"hidden\" value="+password+" name=\"InputtedPassword\">\r\n" + 
 							"		\r\n" + 
 							"		Please select a Function:<br>\r\n" + 
-							"		<select name=\"optionChoice\">\r\n" + 
+							"		<select class = \"optionsButton\" name=\"optionChoice\">\r\n" + 
 							"			<option value=\"add\">Add Quantity</option>\r\n" + 
 							"			<option value=\"remove\">Remove Quantity</option>\r\n" + 
 							"			<option value=\"find\">Find Instrument</option>\r\n" + 
@@ -201,7 +202,7 @@ public class Servlet extends HttpServlet {
 				}	
 				if(request.getParameter("submitButton")!=null)
 				{
-					
+					//iterates through our backend and creates the drop downs for our id
 					String info = "";
 					String value = "<select name=\"ids\">";
 					Iterator<Product> iter = myData.getIterator();
@@ -214,7 +215,7 @@ public class Servlet extends HttpServlet {
 					value += "</select>\r\n";
 					request.setAttribute("ids", value);
 				
-					if(request.getParameter("optionChoice").equals("add"))
+					if(request.getParameter("optionChoice").equals("add"))//if our add button was chosen then we will allow the user to choose an id of the product to add and how much
 					{
 						
 						response.getWriter().append("<html>\r\n" + 
@@ -240,7 +241,7 @@ public class Servlet extends HttpServlet {
 							"</html>");
 						
 					}
-					if(request.getParameter("optionChoice").equals("remove"))
+					if(request.getParameter("optionChoice").equals("remove"))//if our remove button was chosen then we will allow the user to choose an id of the product to remove and how much
 					{
 							
 							response.getWriter().append("<html>\r\n" + 
@@ -265,7 +266,7 @@ public class Servlet extends HttpServlet {
 									"</body>\r\n" + 
 									"</html>");
 					}
-					if(request.getParameter("optionChoice").equals("find"))
+					if(request.getParameter("optionChoice").equals("find"))//if our find button was chosen then we will allow the user to choose an id of the product to disply
 					{
 							
 							response.getWriter().append("<html>\r\n" + 
@@ -288,7 +289,7 @@ public class Servlet extends HttpServlet {
 									"</body>\r\n" + 
 									"</html>");
 					}
-					if(request.getParameter("optionChoice").equals("size"))
+					if(request.getParameter("optionChoice").equals("size"))//if our size button was chosen then display the size
 						{
 							
 							response.getWriter().append("<html>\r\n" + 
@@ -309,7 +310,7 @@ public class Servlet extends HttpServlet {
 							
 						}
 				}
-				if(request.getParameter("submitChoice")!=null) 
+				if(request.getParameter("submitChoice")!=null) //if our submit is pressed then we will show a message and do some calculations depending on what was picked
 				{
 					
 					response.getWriter().append("<html>\r\n" + 
@@ -328,7 +329,7 @@ public class Servlet extends HttpServlet {
 							"</body>\r\n" + 
 							"</html>");
 					
-					String chosen = request.getParameter("choice");
+					String chosen = request.getParameter("choice");//sets our chosen to the chosen value of the choice drop down
 					
 					
 					String selected_id = request.getParameter("ids");
@@ -338,10 +339,10 @@ public class Servlet extends HttpServlet {
 						Product p = iter1.next();
 
 						
-						if(p.getId().equals(selected_id))
+						if(p.getId().equals(selected_id))//if the id's match the chosen id we will stop here for a bit
 						{
 
-							if(chosen.equals("add")) 
+							if(chosen.equals("add")) //if choice chosen is add then it calculates the new value of the item added to
 							{
 								String increase_quantity = request.getParameter("myRange");
 								int inp_quan_integer = Integer.parseInt(increase_quantity);
@@ -350,7 +351,7 @@ public class Servlet extends HttpServlet {
 								p.setQuantity(total_add_quantity);
 								myData.toWrite();
 							}
-							if(chosen.equals("remove")) 
+							if(chosen.equals("remove")) //if choice chosen is remove then it calculates the new value of the item removed from
 							{
 								String increase_quantity = request.getParameter("myRange");
 								int inp_quan_integer = Integer.parseInt(increase_quantity);
@@ -359,7 +360,7 @@ public class Servlet extends HttpServlet {
 								p.setQuantity(total_sub_quantity);
 								myData.toWrite();
 							}
-							if(chosen.equals("find")) 
+							if(chosen.equals("find")) //if the choice chosen was find then we will execute the code below which displays the info about the item
 							{
 								String show_product = p.toString();
 								
@@ -388,7 +389,7 @@ public class Servlet extends HttpServlet {
 
 			}
 		
-				
+	//Else that handles if the user isnt authenticated
 	else
 	{
 		RequestDispatcher rd=request.getRequestDispatcher("/wrongInput.jsp");

@@ -20,8 +20,8 @@
 			String selectionText = (String) request.getAttribute("dropDownOptions");
 		%>
 		Please select a Category<br><%=selectionText%><br> 
-		<input type="submit" value="Show Items" name="showItemsButton">
-		<input type="submit" value="View Cart" name="viewCartButton">
+		<input type="submit" value="Show Items" class = "showItems" name="showItemsButton">
+		<input type="submit" value="View Cart" class = "viewCart" name="viewCartButton">
 	</form>
 </body>
 </html>
