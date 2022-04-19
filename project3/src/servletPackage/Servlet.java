@@ -285,10 +285,8 @@ public class Servlet extends HttpServlet {
 									"	    <input type=\"hidden\" value="+password+" name=\"InputtedPassword\">\r\n" + 
 									"	    <input type=\"hidden\" value="+choice+" name=\"choice\">\r\n"+
 									value+
-									"	<input type=\"range\" min=\"1\" max=\"100\" value=\"50\" class=\"slider\" name=\"myRange\"><br>"+
-									"	<input type=\"reset\" value =\"Reset\" name=\"reset\" class = \"resetButton\">"+
 									"	<input type=\"submit\" value =\"Submit\" name=\"submitChoice\" class = \"submitChoiceButton\"><br>"+
-									"	<h5>Choose the ID and then the quantity to remove</h5>"+
+									"	<h5>Choose the ID of the product you want to display</h5>"+
 									
 									info+
 									"	</form>\r\n" + 
@@ -310,13 +308,7 @@ public class Servlet extends HttpServlet {
 									"	    <input type=\"hidden\" value="+user+" name=\"userName\">\r\n" + 
 									"	    <input type=\"hidden\" value="+password+" name=\"InputtedPassword\">\r\n" + 
 									"	    <input type=\"hidden\" value="+choice+" name=\"choice\">\r\n"+
-									value+
-									"	<input type=\"range\" min=\"1\" max=\"100\" value=\"50\" class=\"slider\" name=\"myRange\"><br>"+
-									"	<input type=\"reset\" value =\"Reset\" name=\"reset\" class = \"resetButton\">"+
-									"	<input type=\"submit\" value =\"Submit\" name=\"submitChoice\" class = \"submitChoiceButton\"><br>"+
-									"	<h5>Choose the ID and then the quantity to remove</h5>"+
-									
-									info+
+									"	<h5>The inventory contains " + myData.getInventorySize() + " items</h5>"+
 									"	</form>\r\n" + 
 									"</body>\r\n" + 
 									"</html>");
@@ -325,8 +317,6 @@ public class Servlet extends HttpServlet {
 				}
 				if(request.getParameter("submitChoice")!=null) 
 				{
-				
-					//System.out.println(request.getParameter("choice"));
 					
 					response.getWriter().append("<html>\r\n" + 
 							"<head>\r\n" + 
@@ -339,6 +329,7 @@ public class Servlet extends HttpServlet {
 							"	    <input type=\"hidden\" value="+user+" name=\"userName\">\r\n" + 
 							"	    <input type=\"hidden\" value="+password+" name=\"InputtedPassword\">\r\n" + 
 							"	    <input type=\"hidden\" value="+choice+" name=\"choice\">\r\n"+
+							"		<h5>Thank you, return to previous page</h5>"+
 							"	</form>\r\n" + 
 							"</body>\r\n" + 
 							"</html>");
@@ -346,36 +337,42 @@ public class Servlet extends HttpServlet {
 					String chosen = request.getParameter("choice");
 					System.out.println(chosen);
 					
+					
 					String selected_id = request.getParameter("ids");
-					String increase_quantity = request.getParameter("myRange");
-					int inp_quan_integer = Integer.parseInt(increase_quantity);
 
 					Iterator<Product> iter1 = myData.getIterator();
 					while (iter1.hasNext()) {
 						Product p = iter1.next();
-						int total_add_quantity = inp_quan_integer + p.getQuantity();
-						int total_sub_quantity = p.getQuantity() - inp_quan_integer;
-						
+
 						
 						if(p.getId().equals(selected_id))
 						{
 							System.out.println("id matches");
-							if(chosen.equals("add")) {
+							if(chosen.equals("add")) 
+							{
+								String increase_quantity = request.getParameter("myRange");
+								int inp_quan_integer = Integer.parseInt(increase_quantity);
+								int total_add_quantity = inp_quan_integer + p.getQuantity();
+								
 								p.setQuantity(total_add_quantity);
 								myData.toWrite();
-								System.out.println("add working");
+								//System.out.println("add working");
 							}
-							if(chosen.equals("remove")) {
+							if(chosen.equals("remove")) 
+							{
+								String increase_quantity = request.getParameter("myRange");
+								int inp_quan_integer = Integer.parseInt(increase_quantity);
+								int total_sub_quantity = p.getQuantity() - inp_quan_integer;
+								
 								p.setQuantity(total_sub_quantity);
 								myData.toWrite();
-								System.out.println("sub working");
+								//System.out.println("sub working");
 							}
-							if(chosen.equals("find")) {
-								System.out.println("find working");
+							if(chosen.equals("find")) 
+							{
+								//System.out.println("find working");
 							}
-							if(chosen.equals("size")) {
-								System.out.println("size working");
-							}
+
 						}
 					}
 				}
