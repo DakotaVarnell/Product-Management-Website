@@ -69,8 +69,9 @@ public class Servlet extends HttpServlet {
 					else {
 						response.getWriter().append("<body>\r\n"); 
 					}
-					response.getWriter().append(user+" Please Select One:<br>	<form action=http://localhost:8080/project3/Servlet\r\n" + 
+					response.getWriter().append("<h2 class = \"user\">" + user + "</h2>" +" <h2 class = \"selectOne\">Please Select One:</h2><br>	<form action=http://localhost:8080/project3/Servlet\r\n" +
 							"		method=\"get\">\r\n" + 
+							"		<link rel=\"stylesheet\" href=\"style.css\" type = \"text/css\">"+
 							"		<input type=\"hidden\" value=\""+user+"\" name=\"userName\">\r\n" + 
 							"		<input type=\"hidden\" value=\""+password+"\" name=\"InputtedPassword\">\r\n" + 
 							"		<input type=\"submit\" value=\"Employee\" class = \"employee\" name=\"employeeButton\">\r\n" + 
@@ -117,6 +118,7 @@ public class Servlet extends HttpServlet {
 							"</head>\r\n" + 
 							"<body>\r\n" + 
 							"	\r\n" + 
+							"		<link rel=\"stylesheet\" href=\"style.css\" type = \"text/css\">"+
 							"	<form action=\"/project3/Servlet\" method=\"get\">\r\n" +
 							"		<input type=\"hidden\" value=\""+user+"\" name=\"userName\">\r\n" + 
 							"		<input type=\"hidden\" value=\""+password+"\" name=\"InputtedPassword\">\r\n" + 
@@ -164,6 +166,7 @@ public class Servlet extends HttpServlet {
 							"</head>\r\n" + 
 							"<body>\r\n" + 
 							"	\r\n" + 
+							"		<link rel=\"stylesheet\" href=\"style.css\" type = \"text/css\">"+
 							"	<form action=\"/project3/Servlet\" method=\"get\">\r\n" +
 							"		<input type=\"hidden\" value=\""+user+"\" name=\"userName\">\r\n" + 
 							"		<input type=\"hidden\" value=\""+password+"\" name=\"InputtedPassword\">\r\n" + 
@@ -182,6 +185,7 @@ public class Servlet extends HttpServlet {
 							"</head>\r\n" + 
 							"<body>\r\n" + 
 							user+"	\r\n" + 
+							"		<link rel=\"stylesheet\" href=\"style.css\" type = \"text/css\">"+
 							"	<form action=\"/project3/Servlet\" method=\"get\">\r\n" + 
 							"	    <input type=\"hidden\" value="+user+" name=\"userName\">\r\n" + 
 							"	    <input type=\"hidden\" value="+password+" name=\"InputtedPassword\">\r\n" + 
@@ -225,6 +229,7 @@ public class Servlet extends HttpServlet {
 							"</head>\r\n" + 
 							"<body>\r\n" + 
 							"	\r\n" + 
+							"		<link rel=\"stylesheet\" href=\"style.css\" type = \"text/css\">"+
 							"	<form action=\"/project3/Servlet\" method=\"get\">\r\n" + 
 							"	    <input type=\"hidden\" value="+user+" name=\"userName\">\r\n" + 
 							"	    <input type=\"hidden\" value="+password+" name=\"InputtedPassword\">\r\n" + 
@@ -251,6 +256,7 @@ public class Servlet extends HttpServlet {
 									"</head>\r\n" + 
 									"<body>\r\n" + 
 									"	\r\n" + 
+									"		<link rel=\"stylesheet\" href=\"style.css\" type = \"text/css\">"+
 									"	<form action=\"/project3/Servlet\" method=\"get\">\r\n" + 
 									"	    <input type=\"hidden\" value="+user+" name=\"userName\">\r\n" + 
 									"	    <input type=\"hidden\" value="+password+" name=\"InputtedPassword\">\r\n" + 
@@ -276,6 +282,7 @@ public class Servlet extends HttpServlet {
 									"</head>\r\n" + 
 									"<body>\r\n" + 
 									"	\r\n" + 
+									"		<link rel=\"stylesheet\" href=\"style.css\" type = \"text/css\">"+
 									"	<form action=\"/project3/Servlet\" method=\"get\">\r\n" + 
 									"	    <input type=\"hidden\" value="+user+" name=\"userName\">\r\n" + 
 									"	    <input type=\"hidden\" value="+password+" name=\"InputtedPassword\">\r\n" + 
@@ -299,6 +306,7 @@ public class Servlet extends HttpServlet {
 									"</head>\r\n" + 
 									"<body>\r\n" + 
 									"	\r\n" + 
+									"		<link rel=\"stylesheet\" href=\"style.css\" type = \"text/css\">"+
 									"	<form action=\"/project3/Servlet\" method=\"get\">\r\n" + 
 									"	    <input type=\"hidden\" value="+user+" name=\"userName\">\r\n" + 
 									"	    <input type=\"hidden\" value="+password+" name=\"InputtedPassword\">\r\n" + 
@@ -320,6 +328,7 @@ public class Servlet extends HttpServlet {
 							"</head>\r\n" + 
 							"<body>\r\n" + 
 							"	\r\n" + 
+							"		<link rel=\"stylesheet\" href=\"style.css\" type = \"text/css\">"+
 							"	<form action=\"/project3/Servlet\" method=\"get\">\r\n" + 
 							"	    <input type=\"hidden\" value="+user+" name=\"userName\">\r\n" + 
 							"	    <input type=\"hidden\" value="+password+" name=\"InputtedPassword\">\r\n" + 
@@ -371,6 +380,7 @@ public class Servlet extends HttpServlet {
 										"</head>\r\n" + 
 										"<body>\r\n" + 
 										"	\r\n" + 
+										"		<link rel=\"stylesheet\" href=\"style.css\" type = \"text/css\">"+
 										"	<form action=\"/project3/Servlet\" method=\"get\">\r\n" + 
 										"	    <input type=\"hidden\" value="+user+" name=\"userName\">\r\n" + 
 										"	    <input type=\"hidden\" value="+password+" name=\"InputtedPassword\">\r\n" + 

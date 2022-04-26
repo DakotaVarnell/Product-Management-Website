@@ -61,39 +61,62 @@ form{
 
 .employee
 {
+	font-size: 20pt;
+	background-color: rgb(75, 75, 75);
 	color: orange;
-	background-color: black;
-	border: rgb(75, 75, 75);
+	position: absolute;
+	top: 100px;
+	left: -10px;
+	width: 400px;
 	
+}
+.employee:hover{
+	background-color: orange;
+	color: black;
 }
 
 .customer
 {
-	color: orange;
+	font-size: 20pt;
 	background-color: rgb(75, 75, 75);
-	border: black;
+	color: orange;
+	position: absolute;
+	top: 40px;
+	left: -10px;
+	width: 400px;
+	
+}
+.customers:hover{
+	background-color: orange;
+	color: black;
+}
+
+.selectOne
+{
+	font-size: 35pt;
+	color: orange;
+	font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+	position: absolute;
+	top: 150px;
+	left: 400px;
+}
+
+.user
+{
+	font-size: 35pt;
+	color: orange;
+	font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+	position: absolute;
+	top: 100px;
+	left: 400px;
+
 }
 
 .categoriesButton
 {
-	color: orange;
-	background-color: rgb(75, 75, 75);
-	border: black;
+	
 }
 
-.showItems
-{
-	color: orange;
-	background-color: rgb(75, 75, 75);
-	border: black;
-}
-
-.viewCart
-{
-	color: orange;
-	background-color: rgb(75, 75, 75);
-	border: black;
-}
 
 .optionsButton
 {

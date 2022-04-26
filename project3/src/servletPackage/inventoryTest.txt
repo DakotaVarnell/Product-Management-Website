@@ -1,5 +1,5 @@
-12,Stratocaster,Fender,600.0,Guitar,19,stratocaster.jpg 
-30,Les Paul,Gibson,600.0,Guitar,6,lesPaul.jpg
+12,Stratocaster,Fender,600.0,Guitar,74,stratocaster.jpg 
+30,Les Paul,Gibson,600.0,Guitar,-3,lesPaul.jpg
 49,Mustang,Fender,450.0,Amp,1,file location 
 58,OD-1,Boss,300.0,Pedal,5,file location 
 67,Thick Gauge,Fender,12.0,Strings,20,file location
