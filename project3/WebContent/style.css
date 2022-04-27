@@ -109,20 +109,120 @@ form{
 	position: absolute;
 	top: 100px;
 	left: 400px;
-
 }
 
 .categoriesButton
 {
-	
+	font-size: 20pt;
+	background-color: rgb(75, 75, 75);
+	color: orange;
+	position: absolute;
+	top: 40px;
+	border-color: rgb(75, 75, 75);
+}
+
+.showItems
+{
+	font-size: 20pt;
+	background-color: rgb(75, 75, 75);
+	color: orange;
+	position: absolute;
+	top: 100px;
+	border-color: rgb(75, 75, 75);
+}
+
+.viewCart
+{
+	font-size: 20pt;
+	background-color: rgb(75, 75, 75);
+	color: orange;
+	position: absolute;
+	top: 100px;
+	left: 180px;
+	width: 150px;
+	border-color: rgb(75, 75, 75);
 }
 
 
 .optionsButton
 {
+	font-size: 20pt;
+	background-color: rgb(75, 75, 75);
+	color: orange;
+	position: absolute;
+	top: 40px;
+	border-color: rgb(75, 75, 75);
+	
+}
+
+.submitButton
+{
+	font-size: 20pt;
+	background-color: rgb(75, 75, 75);
+	color: orange;
+	position: absolute;
+	top: 100px;
+	border-color: rgb(75, 75, 75);
+}
+
+.resetButton
+{
+	font-size: 20pt;
+	background-color: rgb(75, 75, 75);
+	color: orange;
+	position: absolute;
+	top: 325px;
+	border-color: rgb(75, 75, 75);
+}
+
+.submitChoiceButton
+{
+	font-size: 20pt;
+	background-color: rgb(75, 75, 75);
+	color: orange;
+	position: absolute;
+	top: 325px;
+	left: 180px;
+	width: 150px;
+	border-color: rgb(75, 75, 75);
+}
+
+.slider
+{
+	font-size: 20pt;
+	background-color: rgb(100, 100, 100);
+	color: orange;
+	position: absolute;
+	top: 0px;
+	left: 110px;
+	width: 400px;
+}
+
+.chooseId
+{
 	color: orange;
 	font-size: 20pt;
+	position: absolute;
+	top: -150px;
+	left: -10px;
+	width: 700px;
+}
+
+.selectIds
+{
+	font-size: 20pt;
+	background-color: rgb(75, 75, 75);
+	color: orange;
+	position: absolute;
+	top: 0px;
+	border-color: rgb(75, 75, 75);
+}
+
+.productList
+{
 	
+	color: black;
+	font-size:20pt;
 }
 
 

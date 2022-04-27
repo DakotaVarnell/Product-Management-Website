@@ -165,6 +165,7 @@ public class Servlet extends HttpServlet {
 							"<title>6th Street Music Co. </title>\r\n" + 
 							"</head>\r\n" + 
 							"<body>\r\n" + 
+							"<h2 class = \"user\">" + user + "</h2><br>" +
 							"	\r\n" + 
 							"		<link rel=\"stylesheet\" href=\"style.css\" type = \"text/css\">"+
 							"	<form action=\"/project3/Servlet\" method=\"get\">\r\n" +
@@ -184,7 +185,8 @@ public class Servlet extends HttpServlet {
 							"<title>6th Street Music Co. </title>\r\n" + 
 							"</head>\r\n" + 
 							"<body>\r\n" + 
-							user+"	\r\n" + 
+							"<h2 class = \"user\">" + user + "</h2><br>" +
+							"	\r\n" + 
 							"		<link rel=\"stylesheet\" href=\"style.css\" type = \"text/css\">"+
 							"	<form action=\"/project3/Servlet\" method=\"get\">\r\n" + 
 							"	    <input type=\"hidden\" value="+user+" name=\"userName\">\r\n" + 
@@ -198,7 +200,7 @@ public class Servlet extends HttpServlet {
 							"			<option value=\"size\">Inventory Size</option>\r\n" + 
 							"		</select>\r\n" + 
 							"		<br> \r\n" + 
-							"		<input type=\"submit\" value=\"Submit\" name=\"submitButton\">\r\n" + 
+							"		<input type=\"submit\" class = \"submitButton\" value=\"Submit\" name=\"submitButton\">\r\n" + 
 							"	</form>\r\n" + 
 							"</body>\r\n" + 
 							"</html>");
@@ -207,8 +209,8 @@ public class Servlet extends HttpServlet {
 				if(request.getParameter("submitButton")!=null)
 				{
 					//iterates through our backend and creates the drop downs for our id
-					String info = "";
-					String value = "<select name=\"ids\">";
+					String info = "<h3 class = \"productList\">";
+					String value = "<select name=\"ids\" class = \"selectIds\">";
 					Iterator<Product> iter = myData.getIterator();
 					while (iter.hasNext()) {
 						Product p = iter.next();
@@ -216,6 +218,7 @@ public class Servlet extends HttpServlet {
 						value += "<option name = \"idDropDown\" value=\""+p.getId()+"\">"+p.getId()+"</option>";
 						
 					}
+					info += "</h3>";
 					value += "</select>\r\n";
 					request.setAttribute("ids", value);
 				
@@ -231,16 +234,15 @@ public class Servlet extends HttpServlet {
 							"	\r\n" + 
 							"		<link rel=\"stylesheet\" href=\"style.css\" type = \"text/css\">"+
 							"	<form action=\"/project3/Servlet\" method=\"get\">\r\n" + 
+							"	<h5 class = \"chooseId\" >Choose the ID and then the quantity to add</h5>"+
 							"	    <input type=\"hidden\" value="+user+" name=\"userName\">\r\n" + 
 							"	    <input type=\"hidden\" value="+password+" name=\"InputtedPassword\">\r\n" + 
 							"	    <input type=\"hidden\" value="+choice+" name=\"choice\">\r\n"+
 							value+
 							"	<input type=\"range\" min=\"1\" max=\"100\" value=\"50\" class=\"slider\" name=\"myRange\"><br>"+
+							info+
 							"	<input type=\"reset\" value =\"Reset\" name=\"reset\" class = \"resetButton\">"+
 							"	<input type=\"submit\" value =\"Submit\" name=\"submitChoice\" class = \"submitChoiceButton\"><br>"+
-							"	<h5>Choose the ID and then the quantity to add</h5>"+
-							
-							info+
 							"	</form>\r\n" + 
 							"</body>\r\n" + 
 							"</html>");
