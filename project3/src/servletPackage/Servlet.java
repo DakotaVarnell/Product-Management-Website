@@ -243,6 +243,8 @@ public class Servlet extends HttpServlet {
 							info+
 							"	<input type=\"reset\" value =\"Reset\" name=\"reset\" class = \"resetButton\">"+
 							"	<input type=\"submit\" value =\"Submit\" name=\"submitChoice\" class = \"submitChoiceButton\"><br>"+
+							"	<h3 class = \"idLabel\" >ID</h3>"+
+							"	<h3 class = \"quantityLabel\" >Quantity</h3>"+
 							"	</form>\r\n" + 
 							"</body>\r\n" + 
 							"</html>");
@@ -251,52 +253,53 @@ public class Servlet extends HttpServlet {
 					if(request.getParameter("optionChoice").equals("remove"))//if our remove button was chosen then we will allow the user to choose an id of the product to remove and how much
 					{
 							
-							response.getWriter().append("<html>\r\n" + 
-									"<head>\r\n" + 
-									"<meta charset=\"ISO-8859-1\">\r\n" + 
-									"<title>6th Street Music Co. </title>\r\n" + 
-									"</head>\r\n" + 
-									"<body>\r\n" + 
-									"	\r\n" + 
-									"		<link rel=\"stylesheet\" href=\"style.css\" type = \"text/css\">"+
-									"	<form action=\"/project3/Servlet\" method=\"get\">\r\n" + 
-									"	    <input type=\"hidden\" value="+user+" name=\"userName\">\r\n" + 
-									"	    <input type=\"hidden\" value="+password+" name=\"InputtedPassword\">\r\n" + 
-									"	    <input type=\"hidden\" value="+choice+" name=\"choice\">\r\n"+
-									value+
-									"	<input type=\"range\" min=\"1\" max=\"100\" value=\"50\" class=\"slider\" name=\"myRange\"><br>"+
-									"	<input type=\"reset\" value =\"Reset\" name=\"reset\" class = \"resetButton\">"+
-									"	<input type=\"submit\" value =\"Submit\" name=\"submitChoice\" class = \"submitChoiceButton\"><br>"+
-									"	<h5>Choose the ID and then the quantity to remove</h5>"+
-									
-									info+
-									"	</form>\r\n" + 
-									"</body>\r\n" + 
-									"</html>");
+						response.getWriter().append("<html>\r\n" + 
+								"<head>\r\n" + 
+								"<meta charset=\"ISO-8859-1\">\r\n" + 
+								"<title>6th Street Music Co. </title>\r\n" + 
+								"</head>\r\n" + 
+								"<body>\r\n" + 
+								"	\r\n" + 
+								"		<link rel=\"stylesheet\" href=\"style.css\" type = \"text/css\">"+
+								"	<form action=\"/project3/Servlet\" method=\"get\">\r\n" + 
+								"	<h5 class = \"chooseId\" >Choose the ID and then the quantity to remove</h5>"+
+								"	    <input type=\"hidden\" value="+user+" name=\"userName\">\r\n" + 
+								"	    <input type=\"hidden\" value="+password+" name=\"InputtedPassword\">\r\n" + 
+								"	    <input type=\"hidden\" value="+choice+" name=\"choice\">\r\n"+
+								value+
+								"	<input type=\"range\" min=\"1\" max=\"100\" value=\"50\" class=\"slider\" name=\"myRange\"><br>"+
+								info+
+								"	<input type=\"reset\" value =\"Reset\" name=\"reset\" class = \"resetButton\">"+
+								"	<input type=\"submit\" value =\"Submit\" name=\"submitChoice\" class = \"submitChoiceButton\"><br>"+
+								"	<h3 class = \"idLabel\" >ID</h3>"+
+								"	<h3 class = \"quantityLabel\" >Quantity</h3>"+
+								"	</form>\r\n" + 
+								"</body>\r\n" + 
+								"</html>");
 					}
 					if(request.getParameter("optionChoice").equals("find"))//if our find button was chosen then we will allow the user to choose an id of the product to disply
 					{
 							
-							response.getWriter().append("<html>\r\n" + 
-									"<head>\r\n" + 
-									"<meta charset=\"ISO-8859-1\">\r\n" + 
-									"<title>6th Street Music Co. </title>\r\n" + 
-									"</head>\r\n" + 
-									"<body>\r\n" + 
-									"	\r\n" + 
-									"		<link rel=\"stylesheet\" href=\"style.css\" type = \"text/css\">"+
-									"	<form action=\"/project3/Servlet\" method=\"get\">\r\n" + 
-									"	    <input type=\"hidden\" value="+user+" name=\"userName\">\r\n" + 
-									"	    <input type=\"hidden\" value="+password+" name=\"InputtedPassword\">\r\n" + 
-									"	    <input type=\"hidden\" value="+choice+" name=\"choice\">\r\n"+
-									value+
-									"	<input type=\"submit\" value =\"Submit\" name=\"submitChoice\" class = \"submitChoiceButton\"><br>"+
-									"	<h5>Choose the ID of the product you want to display</h5>"+
-									
-									info+
-									"	</form>\r\n" + 
-									"</body>\r\n" + 
-									"</html>");
+						response.getWriter().append("<html>\r\n" + 
+								"<head>\r\n" + 
+								"<meta charset=\"ISO-8859-1\">\r\n" + 
+								"<title>6th Street Music Co. </title>\r\n" + 
+								"</head>\r\n" + 
+								"<body>\r\n" + 
+								"	\r\n" + 
+								"		<link rel=\"stylesheet\" href=\"style.css\" type = \"text/css\">"+
+								"	<form action=\"/project3/Servlet\" method=\"get\">\r\n" + 
+								"	<h5 class = \"chooseId\" >Choose the ID of the product you want to display</h5>"+
+								"	    <input type=\"hidden\" value="+user+" name=\"userName\">\r\n" + 
+								"	    <input type=\"hidden\" value="+password+" name=\"InputtedPassword\">\r\n" + 
+								"	    <input type=\"hidden\" value="+choice+" name=\"choice\">\r\n"+
+								value+
+								info+
+								"	<input type=\"submit\" value =\"Submit\" name=\"submitChoice\" class = \"submitChoiceButton\"><br>"+
+								"	<h3 class = \"idLabel\" >ID</h3>"+
+								"	</form>\r\n" + 
+								"</body>\r\n" + 
+								"</html>");
 					}
 					if(request.getParameter("optionChoice").equals("size"))//if our size button was chosen then display the size
 						{
@@ -335,7 +338,7 @@ public class Servlet extends HttpServlet {
 							"	    <input type=\"hidden\" value="+user+" name=\"userName\">\r\n" + 
 							"	    <input type=\"hidden\" value="+password+" name=\"InputtedPassword\">\r\n" + 
 							"	    <input type=\"hidden\" value="+choice+" name=\"choice\">\r\n"+
-							"		<h5>Thank you, return to previous page</h5>"+
+							"		<h5 class = \"returnLabel\">Thank you, return to previous page</h5>"+
 							"	</form>\r\n" + 
 							"</body>\r\n" + 
 							"</html>");
@@ -373,7 +376,7 @@ public class Servlet extends HttpServlet {
 							}
 							if(chosen.equals("find")) //if the choice chosen was find then we will execute the code below which displays the info about the item
 							{
-								String show_product = p.toString();
+								String show_product = "<h3 class = \"displayProduct\">" + p.toString() + "</h3>";
 								
 								response.getWriter().append("<html>\r\n" + 
 										"<head>\r\n" + 
@@ -387,7 +390,7 @@ public class Servlet extends HttpServlet {
 										"	    <input type=\"hidden\" value="+user+" name=\"userName\">\r\n" + 
 										"	    <input type=\"hidden\" value="+password+" name=\"InputtedPassword\">\r\n" + 
 										"	    <input type=\"hidden\" value="+choice+" name=\"choice\">\r\n"+
-										"		<h5>The item you were looking for is displayed below</h5>"+
+										"		<h5 class = \"findLabel\">The item you were looking for is displayed below</h5>"+
 										show_product+
 										"		<img src =\"" +p.getImage()+ "\" width = 300 height = 300"+
 										"	</form>\r\n" + 

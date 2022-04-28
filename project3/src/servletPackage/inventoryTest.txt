@@ -1,8 +1,8 @@
 12,Stratocaster,Fender,600.0,Guitar,74,stratocaster.jpg 
-30,Les Paul,Gibson,600.0,Guitar,-3,lesPaul.jpg
-49,Mustang,Fender,450.0,Amp,1,file location 
-58,OD-1,Boss,300.0,Pedal,5,file location 
-67,Thick Gauge,Fender,12.0,Strings,20,file location
-71,Thin Picks,Tortex,5.0,Picks,20,file location
-82,Metronome,Boss,70.0,Metronome,10,file location 
-23,Studio,Epiphone,30.0,Cable,9,File path
+30,Les Paul,Gibson,600.0,Guitar,50,lesPaul.jpg
+49,Mustang,Fender,450.0,Amp,1,mustangAmp.jpg 
+58,OD-1,Boss,300.0,Pedal,5,bossOD1.jpg 
+67,Thick Gauge,Fender,12.0,Strings,20,fenderThickPicks.jpg
+71,Thin Picks,Tortex,5.0,Picks,20,tortexPicks.jpg
+82,Metronome,Boss,70.0,Metronome,10,bossMetronome.jpg 
+23,Studio,Epiphone,30.0,Cable,9,ephiphoneCable.jpg
