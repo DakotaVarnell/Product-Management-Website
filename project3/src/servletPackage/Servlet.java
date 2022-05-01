@@ -96,8 +96,8 @@ public class Servlet extends HttpServlet {
 				if(request.getParameter("showItemsButton")!= null)//if the show item buttons is pressed it wil display all of our items and an id drop down
 				{
 					
-					String info = "";
-					String value = "<select name=\"ids\">";
+					String info = "<h2 name=\"info\" class = \"showCategory\">";
+					String value = "<select name=\"ids\" class = \"customerSelectIds\">";
 					Iterator<Product> iter = myData.getIterator();
 					while (iter.hasNext()) {
 						Product p = iter.next();
@@ -108,6 +108,7 @@ public class Servlet extends HttpServlet {
 
 						}
 					}
+					info += "</h2>\r\n";
 					value += "</select>\r\n";
 					
 					
@@ -151,7 +152,7 @@ public class Servlet extends HttpServlet {
 				if(request.getParameter("viewCartButton") != null) //if the view cart button is pressed then we will display our cart and values in the cart
 				{
 					
-					String cart = "";
+					String cart = "<h2 name=\"cartItems\" class = \"cartItems\">";
 					Iterator<Product> iter = myCart.getIterator();
 					while (iter.hasNext()) {
 						Product p = iter.next();
@@ -171,11 +172,13 @@ public class Servlet extends HttpServlet {
 							"	<form action=\"/project3/Servlet\" method=\"get\">\r\n" +
 							"		<input type=\"hidden\" value=\""+user+"\" name=\"userName\">\r\n" + 
 							"		<input type=\"hidden\" value=\""+password+"\" name=\"InputtedPassword\">\r\n" + 
-							"	<h5>Your Cart</h5>"+
+							"	<h5 class = \"showCustomerCart\">Your Cart</h5>"+
 							cart+
 							"	</form>\r\n" + 
 							"</body>\r\n" + 
 							"</html>");
+					
+					cart += "</h2>\r\n";
 				}
 				
 				if(request.getParameter("employeeButton")!=null) {//if the employee button is pressed it will allow a variet of options below

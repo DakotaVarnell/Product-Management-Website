@@ -86,7 +86,7 @@ form{
 	width: 400px;
 	
 }
-.customers:hover{
+.customer:hover{
 	background-color: orange;
 	color: black;
 }
@@ -121,6 +121,11 @@ form{
 	border-color: rgb(75, 75, 75);
 }
 
+.viewCart:hover{
+	background-color: orange;
+	color: black;
+}
+
 .showItems
 {
 	font-size: 20pt;
@@ -129,6 +134,11 @@ form{
 	position: absolute;
 	top: 100px;
 	border-color: rgb(75, 75, 75);
+}
+
+.showItems:hover{
+	background-color: orange;
+	color: black;
 }
 
 .viewCart
@@ -208,6 +218,21 @@ form{
 	width: 700px;
 }
 
+.submitButton:hover{
+	background-color: orange;
+	color: black;
+}
+
+.resetButton:hover{
+	background-color: orange;
+	color: black;
+}
+
+.submitChoiceButton:hover{
+	background-color: orange;
+	color: black;
+}
+
 .quantityLabel
 {
 	color: orange;
@@ -245,9 +270,20 @@ form{
 	font-size: 20pt;
 	position: absolute;
 	top: 100px;
-	left: 350px;
+	left: 100px;
 	width: 800px;
 	
+}
+
+.customerSelectIds
+{
+	font-size: 20pt;
+	background-color: rgb(75, 75, 75);
+	color: orange;
+	position: absolute;
+	top: -60px;
+	left: -10px;
+	border-color: rgb(75, 75, 75);
 }
 
 .displayProduct
@@ -279,15 +315,58 @@ form{
 
 .displayMessage
 {
-	color: black;
+	color: orange;
 	font-size: 20pt;
+	position: absolute;
+	top: -150px;
+	left: -10px;
+	width: 700px;
+}
+
+.showCategory
+{
+	color: black;
+	font-size:20pt;
+	position: absolute;
+	top: -10px;
+	left: -10px;
+	width: 900px;
 }
 
 .addCart
 {
-	color: orange;
+	font-size: 20pt;
 	background-color: rgb(75, 75, 75);
-	border: black;
+	color: orange;
+	position: absolute;
+	top: 300px;
+	left: -10px;
+	border-color: rgb(75, 75, 75);
+}
+
+.addCart:hover{
+	background-color: orange;
+	color: black;
+}
+
+.showCustomerCart
+{
+	color: orange;
+	font-size: 20pt;
+	position: absolute;
+	top: -150px;
+	left: -10px;
+	width: 700px;
+}
+
+.cartItems
+{
+	color: black;
+	font-size:20pt;
+	position: absolute;
+	top: -10px;
+	left: -10px;
+	width: 900px;
 }
 
 .optionForm
